@@ -27,6 +27,7 @@ The dataset is obtained from Kaggle (found in https://www.kaggle.com/tmdb/tmdb-m
 - How are the average votes distributed among movies?
 - Predicting Popularity of Movies using Linear Regression and Support Vector Regression
 
+Check for the details of analysis and results (https://denizcanyldrm.medium.com/the-movie-database-analysis-dfda957f425d).
 
 ## Licensing, Authors, Acknowledgements:
 
