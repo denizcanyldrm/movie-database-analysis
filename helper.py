@@ -11,16 +11,16 @@ import seaborn as sns
 
 def clean_and_plot(df, col_name, bar_title, possible_vals, plot=True):
     """Displays a plot of pretty things related to the given column name of a dataframe
-	
+
     Args:
-	df (dataframe): a dataframe holding the col_name column
-	col_name (str): one of the column name of df dataframe
-	bar_title (str): string the title of plot
-	possible_vals (list): list of possible values that col_name column has
-	plot (bool): bool providing whether or not you want a plot back
-		
+        df (dataframe): a dataframe holding the col_name column
+        col_name (str): one of the column name of df dataframe
+        bar_title (str): string the title of plot
+        possible_vals (list): list of possible values that col_name column has
+        plot (bool): bool providing whether or not you want a plot back
+
     Returns:
-	dataframe: a dataframe with the proportions of how many individuals             
+        dataframe: a dataframe with the proportions of how many individuals
     """
 
     df_col = df[col_name].value_counts().reset_index()
@@ -54,15 +54,15 @@ def clean_and_plot(df, col_name, bar_title, possible_vals, plot=True):
 
 def total_count(df, col1, col2, look_for):
     """Calculates occurances of each element of a given list
-		
+
     Args:
-	df (dataframe): the pandas dataframe you want to search
-	col1 (str): the column name you want to look through
-	col2 (str): the column you want to count values from
-	look_for (list): a list of strings you want to search for in each row of df[col]
-				
+        df (dataframe): the pandas dataframe you want to search
+        col1 (str): the column name you want to look through
+        col2 (str): the column you want to count values from
+        look_for (list): a list of strings you want to search for in each row of df[col]
+
     Returns:
-	dataframe: a dataframe of each look_for with the count of how often it shows up
+        dataframe: a dataframe of each look_for with the count of how often it shows up
     """
 
     new_df = defaultdict(int)
@@ -79,12 +79,12 @@ def total_count(df, col1, col2, look_for):
 
 def drop_col_all_missing(df):
     """Drops colunms with all missing values of a dataframe
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
-	dataframe: a dataframe having columns with all nan values are dropped
+        dataframe: a dataframe having columns with all nan values are dropped
     """
 
     return df.dropna(how='all', axis=1)
@@ -92,12 +92,12 @@ def drop_col_all_missing(df):
 
 def drop_row_all_missing(df):
     """Drops rows with all missing values of a dataframe
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+    df (dataframe): a pandas dataframe
+
     Returns:
-	dataframe: a dataframe having rows with all missing values are dropped
+    dataframe: a dataframe having rows with all missing values are dropped
     """
 
     return df.dropna(axis=0, how='all')
@@ -105,13 +105,13 @@ def drop_row_all_missing(df):
 
 def fit_data_linear(X_train, y_train):
     """Fits linear model to given args
-		
+
     Args:
-	X_train (dataframe): training data for linear model
-	y_train (dataframe): training labels for linear model
-				
+        X_train (dataframe): training data for linear model
+        y_train (dataframe): training labels for linear model
+
     Returns:
-	classifier: a linear regression model
+        classifier: a linear regression model
     """
 
     linear_model = LinearRegression(normalize=True)
@@ -121,13 +121,13 @@ def fit_data_linear(X_train, y_train):
 
 def fit_data_svm(X_train, y_train):
     """Fits SVR model to given args
-			
+
     Args:
-	X_train (dataframe): training data for SVR model
-	y_train (dataframe): training labels for SVR model
-						
+        X_train (dataframe): training data for SVR model
+        y_train (dataframe): training labels for SVR model
+
     Returns:
-	classifier: a SVR model
+        classifier: a SVR model
     """
 
     svm_model = svm.SVR()
@@ -135,16 +135,16 @@ def fit_data_svm(X_train, y_train):
     return svm_model
 
 
-def split_train_test(X, y, rand_state = 42):
+def split_train_test(X, y, rand_state=42):
     """Splits X and y data into the train and test data
-		
+
     Args:
-	X (dataframe): all data
-	y (dataframe): all labels
-	rand_state (int): an integer for reproducible output across multiple function calls
-				
+        X (dataframe): all data
+        y (dataframe): all labels
+        rand_state (int): an integer for reproducible output across multiple function calls
+
     Returns:
-	dataframe: a pandas dataframe training data
+        dataframe: a pandas dataframe training data
         dataframe: a pandas dataframe test data
         dataframe: a pandas dataframe training labels
         dataframe: a pandas dataframe test labels
@@ -156,14 +156,14 @@ def split_train_test(X, y, rand_state = 42):
 
 def predict_get_score_data(X, y, model):
     """Given a model predicts X data and calculate r2 score
-		
+
     Args:
-	X (dataframe): values that we want to predict
-	y (dataframe): true labels that corresponds to each X example
-	model (classifier): a linear regression or SVR model
-				
+        X (dataframe): values that we want to predict
+        y (dataframe): true labels that corresponds to each X example
+        model (classifier): a linear regression or SVR model
+
     Returns:
-	float: r2 score of the model
+        float: r2 score of the model
     """
 
     y_preds = model.predict(X)
@@ -173,12 +173,12 @@ def predict_get_score_data(X, y, model):
 
 def get_categorical_cols(df):
     """Gets categorical columns of a dataframe
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
-	dataframe: a dataframe with only categorical columns
+        dataframe: a dataframe with only categorical columns
     """
 
     return df.select_dtypes(include=['object']).columns
@@ -186,12 +186,12 @@ def get_categorical_cols(df):
 
 def get_numerical_cols(df):
     """Gets numerical columns of a dataframe
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
-	dataframe: a dataframe with only numerical columns
+        dataframe: a dataframe with only numerical columns
     """
 
     return df.select_dtypes(include=['float', 'int']).columns
@@ -199,12 +199,12 @@ def get_numerical_cols(df):
 
 def get_correlation_matrix(df):
     """Gets correlation matrix of a dataframe
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
-	heatmap: a heatmap that shows correlation matrix for df dataframe
+        heatmap: a heatmap that shows correlation matrix for df dataframe
     """
 
     h_map = sns.heatmap(df.corr(), annot=True, fmt=".2f")
@@ -213,10 +213,10 @@ def get_correlation_matrix(df):
 
 def get_top10_by_popularity(df):
     """Plots top 10 movies with respect to popularity
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
         dataframe: a pandas dataframe holds top 10 movies with respect to popularity
         list: a list of RGB tuples
@@ -226,18 +226,18 @@ def get_top10_by_popularity(df):
     top_ten_1 = top_ten_1.sort_values(by=['popularity'], ascending=False)[:10]
     top_ten_1.columns = ['Original Title', 'Popularity']
     cm = sns.light_palette("purple", as_cmap=True)
-    
+
     return top_ten_1, cm
 
 
 def preprocess_data(df):
     """Preprocesses the dataframe by applying data cleansing methods (Shuffling dataset, Changing infinity values to nan, Dropping columns and rows with all missing values, Filling mean for nan values in numerical columns, Dropping columns with all zeros)
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
-	dataframe: a pandas dataframe having only feature columns where some data cleansing methods applied
+        dataframe: a pandas dataframe having only feature columns where some data cleansing methods applied
     """
 
     # shuffle dataset
@@ -275,12 +275,12 @@ def preprocess_data(df):
 
 def scale_data(df):
     """Scales dataframe into the range [0, 1]
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
-	dataframe: a pandas dataframe whose values scaled into [0, 1]
+        dataframe: a pandas dataframe whose values scaled into [0, 1]
     """
 
     # transforms data into the range [0, 1]
@@ -292,12 +292,12 @@ def scale_data(df):
 
 def read_data(file_name):
     """Reads filename
-		
+
     Args:
-	file_name (str): a filename where we get data
-				
+        file_name (str): a filename where we get data
+
     Returns:
-	dataframe: a pandas dataframe holding data
+        dataframe: a pandas dataframe holding data
     """
 
     df = pd.read_csv(file_name)
@@ -306,10 +306,10 @@ def read_data(file_name):
 
 def print_histogram(df):
     """Prints histogram of a dataframe
-		
+
     Args:
-	df (dataframe): a dataframe that we want to print histogram of it
-				
+        df (dataframe): a dataframe that we want to print histogram of it
+
     Returns:
         None
     """
@@ -320,12 +320,12 @@ def print_histogram(df):
 
 def get_col_row_numbers(df):
     """Gets the numbers of row and column of a dataframe
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
-	int: number of rows of df dataframe
+        int: number of rows of df dataframe
         int: number of columns of df dataframe
     """
 
@@ -336,10 +336,10 @@ def get_col_row_numbers(df):
 
 def print_col_names(df):
     """Prints column names of a dataframe
-		
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
         None
     """
@@ -350,13 +350,13 @@ def print_col_names(df):
 
 def print_save_vote_average(df, col_name):
     """Prints and saves histogram of given column name of a dataframe
-		
-    Args:	
-	df (dataframe): a dataframe
-	col_name (str): column name of df dataframe
-				
+
+    Args:
+        df (dataframe): a dataframe
+        col_name (str): column name of df dataframe
+
     Returns:
-    	None
+        None
     """
 
     ax_va = df[col_name].plot.hist(alpha=1, color='purple', figsize=(8, 4))
@@ -367,12 +367,12 @@ def print_save_vote_average(df, col_name):
 
 def get_keyword_counts(df):
     """Gets keyword count list of 'keywords' column of a dataframe
-			
+
     Args:
-	df (dataframe): a pandas dataframe
-				
+        df (dataframe): a pandas dataframe
+
     Returns:
-	list: list of keyword counts of df dataframe
+        list: list of keyword counts of df dataframe
     """
 
     keyword_counts_list = []
@@ -384,19 +384,33 @@ def get_keyword_counts(df):
 
 def create_prediction_result_matrix(train_score_linear, train_score_svm, test_score_linear, test_score_svm):
     """Creates prediction results of given parameters
-			
+
     Args:
-	train_score_linear (float):  linear regression r2 score for train data
-	train_score_svm (float): SVR r2 score for train data
-	test_score_linear (float): linear regression r2 score for test data
-	test_score_svm (float): SVR r2 score for test data
-				
+        train_score_linear (float):  linear regression r2 score for train data
+        train_score_svm (float): SVR r2 score for train data
+        test_score_linear (float): linear regression r2 score for test data
+        test_score_svm (float): SVR r2 score for test data
+
     Returns:
-	dataframe: a pandas dataframe that holds prediction scores
-    """	
+        dataframe: a pandas dataframe that holds prediction scores
+    """
 
     index = ['Train Score', 'Test Score']
     pd.options.display.float_format = '{:,.2f}'.format
     result_matrix = pd.DataFrame([[train_score_linear, train_score_svm], [test_score_linear, test_score_svm]],
                                  columns=['LR', 'SVR'], index=index)
     return result_matrix
+
+
+def get_description(df):
+    """Get description of a dataframe
+
+    Args:
+        df (dataframe):  a pandas dataframe
+
+    Returns:
+        dataframe: summary statistics of the dataframe
+    """
+
+    description = df.describe()
+    return description
